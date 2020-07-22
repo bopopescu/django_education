@@ -146,7 +146,7 @@ class fichier_systeme(models.Model):
     def __str__(self):
         return str(self.type_de_fichier)+': '+str(self.nom)
     def url_fichier(self):
-        return remove_accents(github + 'Sciences-Ingenieur/raw/master/Systemes/' + self.systeme.nom + '/' + \
+        return remove_accents(github + 'Sciences-Ingenieur/raw/main/Systemes/' + self.systeme.nom + '/' + \
                   self.nom_fichier + '.' + self.type_de_fichier.extension)
 
 class image_systeme(models.Model):
@@ -157,7 +157,7 @@ class image_systeme(models.Model):
     def __str__(self):
         return str(self.type_image_systeme)+': '+str(self.nom)
     def url_image(self):
-        return remove_accents(github + 'Sciences-Ingenieur/raw/master/Systemes/' + self.systeme.nom + '/' + \
+        return remove_accents(github + 'Sciences-Ingenieur/raw/main/Systemes/' + self.systeme.nom + '/' + \
                   self.nom_image + '.' + self.type_image_systeme.extension)
 
 
@@ -271,7 +271,7 @@ class ressource(models.Model):
 def url(self,matiere,lien,type,ilot):
     if matiere=='si':
         if ilot==0:
-            dossier = github + 'Sciences-Ingenieur/raw/master/' + str("S%02d" % self.sequence.numero) + ' ' + \
+            dossier = github + 'Sciences-Ingenieur/raw/main/' + str("S%02d" % self.sequence.numero) + ' ' + \
               self.sequence.nom + '/' + type + ("%02d" % self.numero) \
               + " " + self.nom + "/"
             if lien == 'git':
@@ -281,7 +281,7 @@ def url(self,matiere,lien,type,ilot):
             elif lien == 'prive':
                 return dossier + str("%02d" % self.sequence.numero) + '-' + type + ("%02d" % self.numero) + "_prive.pdf"
         else:
-            dossier = github + 'Sciences-Ingenieur/raw/master/' + str("S%02d" % self.tp.sequence.numero) + ' ' + \
+            dossier = github + 'Sciences-Ingenieur/raw/main/' + str("S%02d" % self.tp.sequence.numero) + ' ' + \
               self.tp.sequence.nom + '/' + type + ("%02d" % self.tp.numero) \
               + " " + self.tp.nom + "/Ilot_" + ("%02d" % self.numero) + " " + self.systeme.nom + "/"
             if lien == 'git':
@@ -295,7 +295,7 @@ def url(self,matiere,lien,type,ilot):
             nom_type = 'Cours'
         else:
             nom_type = type
-        dossier = github + 'Informatique/raw/master/' + nom_type + '/' + type + ("%02d" % self.numero) \
+        dossier = github + 'Informatique/raw/main/' + nom_type + '/' + type + ("%02d" % self.numero) \
           + " " + self.nom + "/"
         if lien == 'git':
             return dossier
@@ -447,7 +447,7 @@ class video(models.Model):
         ordering = ['ressource__sequence', 'ressource__numero', 'numero']
 
     def url(self):
-        dossier = github + 'Sciences-Ingenieur/raw/master/' + str("S%02d" % self.ressource.sequence.numero) + ' ' + \
+        dossier = github + 'Sciences-Ingenieur/raw/main/' + str("S%02d" % self.ressource.sequence.numero) + ' ' + \
               self.ressource.sequence.nom +'/'+self.ressource.type_de_ressource()[1]+str("%02d" % self.ressource.numero)+' '+self.ressource.nom+ \
              '/Videos/'
         return dossier+self.nom_fichier+'?raw=true'
@@ -596,7 +596,7 @@ class Professeur(models.Model):
         return self.user.last_name+' '+self.user.first_name
 
 def url_ds(self, lien):
-    dossier = github + 'Sciences-Ingenieur/raw/master/DS/' + annee_scolaire(self.date) +'/DS'+ ("%02d" % self.numero) + "/"
+    dossier = github + 'Sciences-Ingenieur/raw/main/DS/' + annee_scolaire(self.date) +'/DS'+ ("%02d" % self.numero) + "/"
     if lien == 'git':
        return dossier
     elif lien == 'pdf':

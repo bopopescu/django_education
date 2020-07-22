@@ -101,7 +101,7 @@ def lister_ressources_si(request):
 
 def lister_ressources_info(request):
     sequences=sequence_info.objects.all()
-    dossier_ds = github + 'Informatique/raw/master/DS/'
+    dossier_ds = github + 'Informatique/raw/main/DS/'
     return render(request, 'sequences.html', {'sequences':sequences, 'dossier_ds':dossier_ds, 'info':True})
 
 def lister_ds_si(request):
